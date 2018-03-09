@@ -66,3 +66,4 @@ let python_highlight_all=1
 syntax on
 
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+set laststatus=2
