@@ -66,4 +66,9 @@ let python_highlight_all=1
 syntax on
 
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" Enable powerline by default
 set laststatus=2
+
+" Interface with system clipboard by default (such a life saver, man!)
+set clipboard=unnamed
