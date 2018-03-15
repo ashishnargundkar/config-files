@@ -53,6 +53,14 @@ set encoding=utf-8
 
 Bundle 'Valloric/YouCompleteMe'
 
+Plugin 'scrooloose/nerdtree'
+" Start NERDtree with vim
+"autocmd vimenter * NERDTree
+" Easy shortcut to toggle
+map <C-n> :NERDTreeToggle<CR>
+" Quit if NERDtree is the only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -72,3 +80,36 @@ set laststatus=2
 
 " Interface with system clipboard by default (such a life saver, man!)
 set clipboard=unnamed
+
+" Paste unmodified from the system clipboard (no more annoying wrong indents
+" while pasting)
+set paste
+
+" Map leader to spacebar
+let mapleader = "\<Space>"
+
+" Use the solarized dark theme
+colo solarized
+
+"=====[ Highlight matches when jumping to next ]=============
+nnoremap <silent> n n:call HLNext(0.1)<cr>
+nnoremap <silent> N N:call HLNext(0.1)<cr>
+nnoremap <silent> * *:call HLNext(0.1)<cr>
+nnoremap <silent> # #:call HLNext(0.1)<cr>
+
+highlight RedOnBlack ctermbg=black ctermfg=red
+"=====[ Highlight the match in red ]=============
+function! HLNext (blinktime)
+    let [bufnum, lnum, col, off] = getpos('.')
+    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+    let target_pat = '\c\%#\%('.@/.'\)'
+    let blinks = 3
+    for n in range(1, blinks)
+        let red = matchadd('RedOnBlack', target_pat, 101)
+        redraw
+        exec 'sleep ' . float2nr(a:blinktime / (2*blinks) * 1000) . 'm'
+        call matchdelete(red)
+        redraw
+        exec 'sleep ' . float2nr(a:blinktime / (2*blinks) * 1000) . 'm'
+    endfor
+endfunction
