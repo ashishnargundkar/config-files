@@ -1,0 +1,7 @@
+[user]
+	name = Ashish Nargundkar
+	email = apnargundkar@gmail.com
+[core]
+	editor = vim
+[alias]
+	vdiff = difftool -t vimdiff
