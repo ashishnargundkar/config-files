@@ -26,6 +26,12 @@ Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'prendradjaja/vim-vertigo'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -82,7 +88,8 @@ set clipboard=unnamed
 
 " Paste unmodified from the system clipboard (no more annoying wrong indents
 " while pasting)
-set paste
+" Please note that expandtab is disabled when vim is in paste mode
+set pastetoggle=<F2>
 
 " Map leader to spacebar
 let mapleader = "\<Space>"
@@ -97,15 +104,24 @@ nnoremap <silent> N N:call HLNext(0.05)<cr>
 nnoremap <silent> * *:call HLNext(0.05)<cr>
 nnoremap <silent> # #:call HLNext(0.05)<cr>
 
-highlight RedOnBlack ctermbg=black ctermfg=red
-"=====[ Highlight the match in red ]=============
+highlight BlueOnWhite ctermbg=white ctermfg=33
+"=====[ Highlight the curent match ]=============
 function! HLNext (blinktime)
+    let [bufnum, lnum, col, off] = getpos('.')
+    let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+    "let target_pat = '\c\%#\%('.@/.'\)'
+    let target_pat = '\c\%#'.@/
+    let blinks = 5
+    let red = matchadd('BlueOnWhite', target_pat, 101)
+endfunction
+"=====[ Blink the curent match using a highlight ]=============
+function! HLNextBlinker (blinktime)
     let [bufnum, lnum, col, off] = getpos('.')
     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
     let target_pat = '\c\%#\%('.@/.'\)'
     let blinks = 5
     for n in range(1, blinks)
-        let red = matchadd('RedOnBlack', target_pat, 101)
+        let red = matchadd('BlueOnWhite', target_pat, 101)
         redraw
         exec 'sleep ' . float2nr(a:blinktime / (2*blinks) * 1000) . 'm'
         call matchdelete(red)
@@ -128,6 +144,17 @@ set splitright
 
 " In vimdiff, highlight changed portion of lines without syntax colouring
 " https://vi.stackexchange.com/questions/625/how-do-i-use-vim-as-a-diff-tool
-if &diff
-    highlight! link DiffText MatchParen
-endif
+"if &diff
+    "highlight! link DiffText MatchParen
+"endif
+
+" Move through lines using relative numbering without leaving the
+" keyboard home row!
+" See: https://github.com/prendradjaja/vim-vertigo#vimrc-mappings
+nnoremap <silent> <leader>j :<C-U>VertigoDown n<CR>
+vnoremap <silent> <leader>j :<C-U>VertigoDown v<CR>
+onoremap <silent> <leader>j :<C-U>VertigoDown o<CR>
+nnoremap <silent> <leader>k :<C-U>VertigoUp n<CR>
+vnoremap <silent> <leader>k :<C-U>VertigoUp v<CR>
+onoremap <silent> <leader>k :<C-U>VertigoUp o<CR>
+
