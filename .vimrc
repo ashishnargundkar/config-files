@@ -32,6 +32,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'prendradjaja/vim-vertigo'
+Plugin 'jreybert/vimagit'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -70,7 +71,7 @@ set encoding=utf-8
 " Start NERDtree with vim
 "autocmd vimenter * NERDTree
 " Easy shortcut to toggle
-map <C-n> :NERDTreeToggle<CR>
+map <C-N> :NERDTreeToggle<CR>
 " Quit if NERDtree is the only open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -158,3 +159,5 @@ nnoremap <silent> <leader>k :<C-U>VertigoUp n<CR>
 vnoremap <silent> <leader>k :<C-U>VertigoUp v<CR>
 onoremap <silent> <leader>k :<C-U>VertigoUp o<CR>
 
+" In insert mode, save using <C-S> and get out of insert mode
+inoremap <C-S> <Esc>:w<CR>
