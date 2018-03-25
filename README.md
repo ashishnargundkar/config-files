@@ -1,2 +1,2 @@
-# config-files
+# dotfiles
 Stuff like .vimrc, .bashrc, etc.
