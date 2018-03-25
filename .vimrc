@@ -162,4 +162,6 @@ onoremap <silent> <leader>k :<C-U>VertigoUp o<CR>
 " In insert mode, save using <C-S> and get out of insert mode
 inoremap <C-S> <Esc>:w<CR>
 " Realised that I might need to save a file in normal mode too!
+" (e.g. insert mode -> do some edits -> leave insert mode -> browse the file
+" -> realise you need to save your changes)
 nnoremap <C-S> <Esc>:w<CR>
