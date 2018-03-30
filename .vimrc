@@ -96,6 +96,7 @@ set pastetoggle=<F2>
 let mapleader = "\<Space>"
 
 " Use the solarized dark theme
+set background=dark
 colo solarized
 
 "=====[ Highlight matches when jumping to next ]=============
