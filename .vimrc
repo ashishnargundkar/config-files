@@ -99,6 +99,9 @@ let mapleader = "\<Space>"
 set background=dark
 colo solarized
 
+" Spelling correction enabled. Use spellang= to change dictionary language.
+set spell
+
 "=====[ Highlight matches when jumping to next ]=============
 " More Instantly Better Vim - https://www.youtube.com/watch?v=aHm36-na4-4
 nnoremap <silent> n n:call HLNext(0.05)<cr>
@@ -106,8 +109,10 @@ nnoremap <silent> N N:call HLNext(0.05)<cr>
 nnoremap <silent> * *:call HLNext(0.05)<cr>
 nnoremap <silent> # #:call HLNext(0.05)<cr>
 
+" Make sure that the highlight group definition is placed AFTER any
+" colo/colorscheme commands, otherwise this setting will be overridden
 highlight BlueOnWhite ctermbg=white ctermfg=33
-"=====[ Highlight the curent match ]=============
+"=====[ Highlight the current match ]=============
 function! HLNext (blinktime)
     let [bufnum, lnum, col, off] = getpos('.')
     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
@@ -116,7 +121,7 @@ function! HLNext (blinktime)
     let blinks = 5
     let red = matchadd('BlueOnWhite', target_pat, 101)
 endfunction
-"=====[ Blink the curent match using a highlight ]=============
+"=====[ Blink the current match using a highlight ]=============
 function! HLNextBlinker (blinktime)
     let [bufnum, lnum, col, off] = getpos('.')
     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
