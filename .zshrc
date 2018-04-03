@@ -13,7 +13,9 @@ autoload -U select-word-style
 select-word-style bash
 
 # Had to add this to bind <C-s> in vim
+# So as not to be disturbed by Ctrl-S Ctrl-Q in terminals
 # See https://stackoverflow.com/a/11298171
+# https://unix.stackexchange.com/questions/72086/ctrl-s-hang-terminal-emulator
 stty -ixon
 
 # Set name of the theme to load. Optionally, if you set this to "random"
