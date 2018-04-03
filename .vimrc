@@ -64,8 +64,6 @@ au BufNewFile,BufRead *.py
    \ set textwidth=79 |
     \ set autoindent
 
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
 set encoding=utf-8
 
 " Start NERDtree with vim
@@ -171,3 +169,15 @@ inoremap <C-S> <Esc>:w<CR>
 " (e.g. insert mode -> do some edits -> leave insert mode -> browse the file
 " -> realise you need to save your changes)
 nnoremap <C-S> <Esc>:w<CR>
+
+" Make sure that the highlight group definition is placed AFTER any
+" colo/colorscheme commands, otherwise this setting will be overridden
+" Matches trailing whitespaces at the end of a line when not typing at the end
+" and ALL tabs (anywhere in the file)
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight BadWhitespace ctermbg=white
+match BadWhitespace /\s\+$/
+autocmd BufWinEnter * match BadWhitespace /\s\+$/
+autocmd InsertEnter * match BadWhitespace /\s\+\%#\@<!$\|\t/
+autocmd InsertLeave * match BadWhitespace /\s\+$\|\t/
+autocmd BufWinLeave * call clearmatches()
