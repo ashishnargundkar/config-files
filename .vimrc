@@ -176,8 +176,8 @@ nnoremap <C-S> <Esc>:w<CR>
 " and ALL tabs (anywhere in the file)
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight BadWhitespace ctermbg=white
-match BadWhitespace /\s\+$/
-autocmd BufWinEnter * match BadWhitespace /\s\+$/
+match BadWhitespace /\s\+$\|\t/
+autocmd BufWinEnter * match BadWhitespace /\s\+$\|\t/
 autocmd InsertEnter * match BadWhitespace /\s\+\%#\@<!$\|\t/
 autocmd InsertLeave * match BadWhitespace /\s\+$\|\t/
 autocmd BufWinLeave * call clearmatches()
