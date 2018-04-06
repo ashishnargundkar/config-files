@@ -68,9 +68,7 @@ autocmd BufNewFile,BufRead *.py
 
 set encoding=utf-8
 
-" Start NERDtree with vim
-"autocmd vimenter * NERDTree
-" Easy shortcut to toggle
+" Easy shortcut to toggle the NERDTree buffer
 map <C-N> :NERDTreeToggle<CR>
 " Quit if NERDtree is the only open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
