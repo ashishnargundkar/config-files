@@ -79,6 +79,10 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 let python_highlight_all=1
 syntax on
+let g:syntastic_always_populate_loc_list = 1
+
+" Let jdt.ls handle java
+let g:syntastic_java_checkers = []
 
 " Enable powerline by default
 set laststatus=2
