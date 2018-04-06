@@ -87,9 +87,6 @@ let g:syntastic_java_checkers = []
 " Enable powerline by default
 set laststatus=2
 
-" Interface with system clipboard by default (such a life saver, man!)
-set clipboard=unnamed
-
 " Paste unmodified from the system clipboard (no more annoying wrong indents
 " while pasting)
 " Please note that expandtab is disabled when vim is in paste mode
@@ -186,3 +183,8 @@ autocmd BufWinEnter * match BadWhitespace /\s\+$\|\t/
 autocmd InsertEnter * match BadWhitespace /\s\+\%#\@<!$\|\t/
 autocmd InsertLeave * match BadWhitespace /\s\+$\|\t/
 autocmd BufWinLeave * call clearmatches()
+
+" ================= Section for commands with historical importance =================
+" Interface with system clipboard by default (such a life saver, man!)
+"set clipboard=unnamed
+
