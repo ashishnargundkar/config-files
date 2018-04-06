@@ -50,9 +50,6 @@ set number relativenumber
 set foldmethod=indent
 set foldlevel=99
 
-" Enable folding with the spacebar
-" nnoremap <space> za
-
 let g:SimpylFold_docstring_preview=1
 
 set tabstop=4
@@ -105,6 +102,9 @@ colorscheme solarized
 
 " Spelling correction enabled. Use spellang= to change dictionary language.
 set spell
+
+" Toggle folding with leader spacebar
+nnoremap <leader><space> za
 
 "=====[ Highlight matches when jumping to next ]=============
 " More Instantly Better Vim - https://www.youtube.com/watch?v=aHm36-na4-4
