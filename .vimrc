@@ -171,6 +171,8 @@ inoremap <C-S> <Esc>:w<CR>
 " -> realise you need to save your changes)
 nnoremap <C-S> <Esc>:w<CR>
 
+noremap <C-Q> :q<Esc>
+
 " Make sure that the highlight group definition is placed AFTER any
 " colo/colorscheme commands, otherwise this setting will be overridden
 " Matches trailing whitespaces at the end of a line when not typing at the end
