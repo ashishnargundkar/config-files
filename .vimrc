@@ -62,7 +62,7 @@ set expandtab
 set fileformat=unix
 set backspace=indent,eol,start
 
-au BufNewFile,BufRead *.py
+autocmd BufNewFile,BufRead *.py
    \ set textwidth=79 |
     \ set autoindent
 
@@ -98,7 +98,7 @@ let mapleader = "\<Space>"
 
 " Use the solarized dark theme
 set background=dark
-colo solarized
+colorscheme solarized
 
 " Spelling correction enabled. Use spellang= to change dictionary language.
 set spell
