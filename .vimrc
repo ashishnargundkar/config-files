@@ -62,6 +62,11 @@ set expandtab
 set fileformat=unix
 set backspace=indent,eol,start
 
+" Splits open to the right and below (more intuitive)
+" https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally#easier-split-navigations
+set splitbelow
+set splitright
+
 autocmd BufNewFile,BufRead *.py
    \ set textwidth=79 |
     \ set autoindent
@@ -143,17 +148,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Splits open to the right and below (more intuitive)
-" https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally#easier-split-navigations
-set splitbelow
-set splitright
-
-" In vimdiff, highlight changed portion of lines without syntax colouring
-" https://vi.stackexchange.com/questions/625/how-do-i-use-vim-as-a-diff-tool
-"if &diff
-    "highlight! link DiffText MatchParen
-"endif
-
 " Move through lines using relative numbering without leaving the
 " keyboard home row!
 " See: https://github.com/prendradjaja/vim-vertigo#vimrc-mappings
@@ -205,4 +199,8 @@ map <silent> <leader>sv :source $MYVIMRC<CR>
 " Interface with system clipboard by default (such a life saver, man!)
 "set clipboard=unnamed
 
-.
+" In vimdiff, highlight changed portion of lines without syntax colouring
+" https://vi.stackexchange.com/questions/625/how-do-i-use-vim-as-a-diff-tool
+"if &diff
+    "highlight! link DiffText MatchParen
+"endif
