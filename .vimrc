@@ -33,6 +33,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'prendradjaja/vim-vertigo'
 Plugin 'jreybert/vimagit'
+Plugin 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
