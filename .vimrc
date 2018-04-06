@@ -178,14 +178,31 @@ noremap <C-Q> :q<Esc>
 " Matches trailing whitespaces at the end of a line when not typing at the end
 " and ALL tabs (anywhere in the file)
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight BadWhitespace ctermbg=white
-match BadWhitespace /\s\+$\|\t/
-autocmd BufWinEnter * match BadWhitespace /\s\+$\|\t/
-autocmd InsertEnter * match BadWhitespace /\s\+\%#\@<!$\|\t/
-autocmd InsertLeave * match BadWhitespace /\s\+$\|\t/
+autocmd FileType * call MatchBadWhiteSpace()
+autocmd InsertEnter * call MatchBadWhiteSpaceInsertEnter()
+autocmd InsertLeave * call MatchBadWhiteSpace()
 autocmd BufWinLeave * call clearmatches()
+
+function! MatchBadWhiteSpace()
+    if &filetype !=# 'help'
+        highlight BadWhitespace ctermbg=white
+        match BadWhitespace /\s\+$\|\t/
+    endif
+endfunction
+
+function! MatchBadWhiteSpaceInsertEnter()
+    if &filetype !=# 'help'
+        highlight BadWhitespace ctermbg=white
+        match BadWhitespace /\s\+\%#\@<!$\|\t/
+    endif
+endfunction
+
+autocmd VimEnter * echo '>^.^<   greetings, human!'
+
+map <silent> <leader>sv :source $MYVIMRC<CR>
 
 " ================= Section for commands with historical importance =================
 " Interface with system clipboard by default (such a life saver, man!)
 "set clipboard=unnamed
 
+.
