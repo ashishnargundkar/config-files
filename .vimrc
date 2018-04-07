@@ -195,6 +195,31 @@ function! MatchBadWhiteSpaceInsertEnter()
     endif
 endfunction
 
+function! SearchAndReplaceCore(search_pattern, replace_pattern)
+    execute 'normal! :''<,''>s/' . a:search_pattern
+                \. '/' . a:replace_pattern . '/g\<CR>\<Esc>'
+endfunction
+
+function! SearchAndReplaceFromRegisters()
+    let ra = nr2char(getchar())
+    let rb = nr2char(getchar())
+
+    let search_pattern = getreg(ra)
+    let replace_pattern = getreg(rb)
+
+    call SearchAndReplaceCore(search_pattern, replace_pattern)
+endfunction
+
+function! SearchAndReplaceFromAB()
+    let search_pattern = getreg('a')
+    let replace_pattern = getreg('b')
+
+    call SearchAndReplaceCore(search_pattern, replace_pattern)
+endfunction
+" Simple (s)
+vnoremap <silent> <leader>ss :call SearchAndReplaceFromAB()<CR>
+" Specify registers (r)
+vnoremap <silent> <leader>sr :call SearchAndReplaceFromRegisters()<CR>
 
 function! AppendSemicolonToLine()
     let orig_cursor_pos = getpos('.')
