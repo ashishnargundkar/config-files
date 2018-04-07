@@ -195,7 +195,6 @@ function! MatchBadWhiteSpaceInsertEnter()
     endif
 endfunction
 
-autocmd VimEnter * echo '>^.^<   greetings, human!'
 
 map <silent> <leader>sv :source $MYVIMRC<CR>
 
