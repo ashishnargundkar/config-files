@@ -196,7 +196,6 @@ function! MatchBadWhiteSpaceInsertEnter()
 endfunction
 
 
-map <silent> <leader>sv :source $MYVIMRC<CR>
 
 " ======================= Section for commands with historical importance =======================
 " Interface with system clipboard by default (such a life saver, man!)
