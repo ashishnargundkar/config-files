@@ -167,6 +167,7 @@ nnoremap <C-S> <Esc>:w<CR>
 
 noremap <C-Q> :q<Esc>
 
+map <silent> <leader>sv :source $MYVIMRC<CR>
 " Make sure that the highlight group definition is placed AFTER any
 " colo/colorscheme commands, otherwise this setting will be overridden
 " Matches trailing whitespaces at the end of a line when not typing at the end
