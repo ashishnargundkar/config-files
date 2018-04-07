@@ -196,6 +196,12 @@ function! MatchBadWhiteSpaceInsertEnter()
 endfunction
 
 
+function! AppendSemicolonToLine()
+    let orig_cursor_pos = getpos('.')
+    execute ':normal! A;'
+    call setpos('.', orig_cursor_pos)
+endfunction
+nnoremap <silent> <leader>a; :call AppendSemicolonToLine()<CR>
 
 " ======================= Section for commands with historical importance =======================
 " Interface with system clipboard by default (such a life saver, man!)
