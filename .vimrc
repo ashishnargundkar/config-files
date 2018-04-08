@@ -192,10 +192,6 @@ nnoremap <silent> <C-S> <Esc>:update<CR>
 " prompt.
 noremap <silent> <C-Q> :confirm :quit<Esc>
 
-" Easy quit the insert mode
-map <M-.> <Esc>
-map <M-l> <Esc>
-
 " Easy reload .vimrc. Immensely useful since I keep tinkering around.
 map <silent> <leader>sv :source $MYVIMRC<CR>
 
@@ -229,6 +225,14 @@ function! MatchBadWhiteSpaceInsertEnter()
 endfunction
 
 " ======================= EXPERIMENTAL SECTION =======================
+
+" Easy quit the insert mode
+lmap <M-.> <Esc>
+lmap <M-l> <Esc>
+map <M-.> <Esc>
+map <M-l> <Esc>
+cmap <M-.> <Esc>
+cmap <M-l> <Esc>
 
 " http://howivim.com/2016/damian-conway/
 " <UP> and <DOWN> to step through the file list
