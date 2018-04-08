@@ -229,8 +229,10 @@ endfunction
 " Easy quit the insert mode
 lmap <M-.> <Esc>
 lmap <M-l> <Esc>
-map <M-.> <Esc>
-map <M-l> <Esc>
+imap <M-.> <Esc>
+imap <M-l> <Esc>
+vmap <M-.> <Esc>
+vmap <M-l> <Esc>
 cmap <M-.> <Esc>
 cmap <M-l> <Esc>
 
