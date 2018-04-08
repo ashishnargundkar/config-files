@@ -82,7 +82,6 @@ autocmd BufNewFile,BufRead *.py
 
 let python_highlight_all=1
 
-
 syntax on
 
 let g:syntastic_always_populate_loc_list = 1
@@ -181,15 +180,21 @@ nnoremap <silent> <leader>k :<C-U>VertigoUp n<CR>
 vnoremap <silent> <leader>k :<C-U>VertigoUp v<CR>
 onoremap <silent> <leader>k :<C-U>VertigoUp o<CR>
 
-" In insert mode, save using <C-S> and get out of insert mode
-inoremap <C-S> <Esc>:w<CR>
-" Realised that I might need to save a file in normal mode too!
+" In insert mode, update (i.e. save only if buffer has unsaved changes)
+" using <C-S> and get out of insert mode
+inoremap <silent> <C-S> <Esc>:update<CR>
+" Realised that I might need to update a file in normal mode too!
 " (e.g. insert mode -> do some edits -> leave insert mode -> browse the file
 " -> realise you need to save your changes)
-nnoremap <C-S> <Esc>:w<CR>
+nnoremap <silent> <C-S> <Esc>:update<CR>
 
-" Easy quitting a buffer with no unsaved changes
-noremap <C-Q> :q<Esc>
+" Easy quitting a buffer. If there are unsaved changes, get a confirmation
+" prompt.
+noremap <silent> <C-Q> :confirm :quit<Esc>
+
+" Easy quit the insert mode
+map <M-.> <Esc>
+map <M-l> <Esc>
 
 " Easy reload .vimrc. Immensely useful since I keep tinkering around.
 map <silent> <leader>sv :source $MYVIMRC<CR>
