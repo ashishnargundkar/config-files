@@ -64,22 +64,27 @@ set backspace=indent,eol,start
 set splitbelow
 set splitright
 
+set encoding=utf-8
+
+" Enable powerline by default
+set laststatus=2
+
+" Use the solarized dark theme
+set background=dark
+colorscheme solarized
+
+" Spelling correction enabled. Use spellang= to change dictionary language.
+set spell
+
 autocmd BufNewFile,BufRead *.py
    \ set textwidth=79 |
     \ set autoindent
 
-set encoding=utf-8
-
-" Easy shortcut to toggle the NERDTree buffer
-map <C-N> :NERDTreeToggle<CR>
-" Quit if NERDtree is the only open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 let python_highlight_all=1
+
+
 syntax on
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -87,9 +92,6 @@ let g:syntastic_check_on_wq = 0
 
 " Let jdt.ls handle java
 let g:syntastic_java_checkers = []
-
-" Enable powerline by default
-set laststatus=2
 
 " Make CtrlP search inside directories which have a .root file
 " I keep an empty .root file in ~/git inside which all my repos live
@@ -106,15 +108,16 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 " Please note that expandtab is disabled when vim is in paste mode
 set pastetoggle=<F2>
 
+" Easy shortcut to toggle the NERDTree buffer
+map <C-N> :NERDTreeToggle<CR>
+" Quit if NERDtree is the only open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " Map leader to spacebar
 let mapleader = "\<Space>"
-
-" Use the solarized dark theme
-set background=dark
-colorscheme solarized
-
-" Spelling correction enabled. Use spellang= to change dictionary language.
-set spell
 
 " Toggle folding with leader spacebar
 nnoremap <leader><space> za
@@ -215,6 +218,12 @@ function! MatchBadWhiteSpaceInsertEnter()
     endif
 endfunction
 
+
+" Simple (s)
+vnoremap <silent> <leader>ss :call SearchAndReplaceFromAB()<CR>
+" Specify registers (r)
+vnoremap <silent> <leader>sr :call SearchAndReplaceFromRegisters()<CR>
+
 " Convenience function written to perform global search and replace
 " within VISUAL selection. Please see the wrappers SearchAndReplaceFromAB and
 " SearchAndReplaceFromRegisters which supply the required arguments.
@@ -247,17 +256,12 @@ function! SearchAndReplaceFromRegisters()
     call SearchAndReplaceCore(search_pattern, replace_pattern)
 endfunction
 
-" Simple (s)
-vnoremap <silent> <leader>ss :call SearchAndReplaceFromAB()<CR>
-" Specify registers (r)
-vnoremap <silent> <leader>sr :call SearchAndReplaceFromRegisters()<CR>
-
+nnoremap <silent> <leader>a; :call AppendSemicolonToLine()<CR>
 function! AppendSemicolonToLine()
     let orig_cursor_pos = getpos('.')
     execute ':normal! A;'
     call setpos('.', orig_cursor_pos)
 endfunction
-nnoremap <silent> <leader>a; :call AppendSemicolonToLine()<CR>
 
 " ======================= Section for commands with historical importance =======================
 " Interface with system clipboard by default (such a life saver, man!)
