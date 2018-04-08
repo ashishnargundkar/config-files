@@ -102,6 +102,8 @@ let g:ctrlp_root_markers=['.root']
 " Start CtrlP in mixed mode (MRU + Buffers + Files)
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
+" Makes these visible to vim in general and CtrlP in particular
+set wildignore-=.vimrc,.tmux.conf,.zshrc,.emacs
 
 " Paste unmodified from the system clipboard (no more annoying wrong indents
 " while pasting)
