@@ -124,6 +124,11 @@ let mapleader = "\<Space>"
 " Toggle folding with leader spacebar
 nnoremap <leader><space> za
 
+" Make the single quote work like a backtick.  Puts the cursor on the column of
+" a mark, instead of going to the first non-blank character in the line.
+" Thank you, tips.txt!
+map ' `
+
 "=====[ Highlight matches when jumping to next ]=============
 " More Instantly Better Vim - https://www.youtube.com/watch?v=aHm36-na4-4
 nnoremap <silent> n n:call HLNext(0.05)<cr>
