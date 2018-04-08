@@ -91,6 +91,16 @@ let g:syntastic_java_checkers = []
 " Enable powerline by default
 set laststatus=2
 
+" Make CtrlP search inside directories which have a .root file
+" I keep an empty .root file in ~/git inside which all my repos live
+" This enables CtrlP to search all my repos
+" https://vi.stackexchange.com/questions/2724/how-to-add-multiple-git-projects-to-ctrl-p-search-path
+let g:ctrlp_root_markers=['.root']
+
+" Start CtrlP in mixed mode (MRU + Buffers + Files)
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+
 " Paste unmodified from the system clipboard (no more annoying wrong indents
 " while pasting)
 " Please note that expandtab is disabled when vim is in paste mode
