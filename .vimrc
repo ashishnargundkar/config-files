@@ -178,23 +178,30 @@ inoremap <C-S> <Esc>:w<CR>
 " -> realise you need to save your changes)
 nnoremap <C-S> <Esc>:w<CR>
 
+" Easy quitting a buffer with no unsaved changes
 noremap <C-Q> :q<Esc>
 
+" Easy reload .vimrc. Immensely useful since I keep tinkering around.
 map <silent> <leader>sv :source $MYVIMRC<CR>
 
 " ======================= EXPERIMENTAL SECTION =======================
 
-" Make sure that the highlight group definition is placed AFTER any
+" MAKE SURE that the highlight group definition is placed AFTER any
 " colo/colorscheme commands, otherwise this setting will be overridden
 " Matches trailing whitespaces at the end of a line when not typing at the end
 " and ALL tabs (anywhere in the file)
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+" Had to change the first autocmd from BufWinEnter to FileType as I observed
+" that &filetype is not set when we do the check on BufWinEnter
 autocmd FileType * call MatchBadWhiteSpace()
 autocmd InsertEnter * call MatchBadWhiteSpaceInsertEnter()
 autocmd InsertLeave * call MatchBadWhiteSpace()
 autocmd BufWinLeave * call clearmatches()
 
 function! MatchBadWhiteSpace()
+    " Since vim help files are indented with tabs, highlighting them
+    " gives a visually annoying result.  We only apply the highlight
+    " to non-help files.
     if &filetype !=# 'help'
         highlight BadWhitespace ctermbg=white
         match BadWhitespace /\s\+$\|\t/
@@ -208,11 +215,28 @@ function! MatchBadWhiteSpaceInsertEnter()
     endif
 endfunction
 
+" Convenience function written to perform global search and replace
+" within VISUAL selection. Please see the wrappers SearchAndReplaceFromAB and
+" SearchAndReplaceFromRegisters which supply the required arguments.
 function! SearchAndReplaceCore(search_pattern, replace_pattern)
     execute 'normal! :''<,''>s/' . a:search_pattern
                 \. '/' . a:replace_pattern . '/g\<CR>\<Esc>'
 endfunction
 
+" Just use the keymapping to trigger this command and the search pattern will
+" be taken from register a, the replacement pattern will be taken from
+" register b
+function! SearchAndReplaceFromAB()
+    let search_pattern = getreg('a')
+    let replace_pattern = getreg('b')
+
+    call SearchAndReplaceCore(search_pattern, replace_pattern)
+endfunction
+
+" After the keymapping, user has to make two keystrokes corresponding to
+" two register names:
+"    first should contain the search pattern
+"    second should contain the replacement pattern
 function! SearchAndReplaceFromRegisters()
     let ra = nr2char(getchar())
     let rb = nr2char(getchar())
@@ -223,12 +247,6 @@ function! SearchAndReplaceFromRegisters()
     call SearchAndReplaceCore(search_pattern, replace_pattern)
 endfunction
 
-function! SearchAndReplaceFromAB()
-    let search_pattern = getreg('a')
-    let replace_pattern = getreg('b')
-
-    call SearchAndReplaceCore(search_pattern, replace_pattern)
-endfunction
 " Simple (s)
 vnoremap <silent> <leader>ss :call SearchAndReplaceFromAB()<CR>
 " Specify registers (r)
