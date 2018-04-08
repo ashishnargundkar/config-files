@@ -199,8 +199,6 @@ map <M-l> <Esc>
 " Easy reload .vimrc. Immensely useful since I keep tinkering around.
 map <silent> <leader>sv :source $MYVIMRC<CR>
 
-" ======================= EXPERIMENTAL SECTION =======================
-
 " MAKE SURE that the highlight group definition is placed AFTER any
 " colo/colorscheme commands, otherwise this setting will be overridden
 " Matches trailing whitespaces at the end of a line when not typing at the end
@@ -230,6 +228,18 @@ function! MatchBadWhiteSpaceInsertEnter()
     endif
 endfunction
 
+" ======================= EXPERIMENTAL SECTION =======================
+
+" http://howivim.com/2016/damian-conway/
+" <UP> and <DOWN> to step through the file list
+nmap <silent> <UP>            :prev<CR>
+nmap <silent> <DOWN>          :next<CR>
+" <LEFT> and <RIGHT> to step through the quickfix list
+nmap <silent> <LEFT>          :cprev<CR>
+nmap <silent> <RIGHT>         :cnext<CR>
+" double <LEFT> and <RIGHT> to jump through the quickfix file list
+nmap <silent> <LEFT><LEFT>    :cpfile<CR><C-G>
+nmap <silent> <RIGHT><RIGHT>  :cnfile<CR><C-G>
 
 " Simple (s)
 vnoremap <silent> <leader>ss :call SearchAndReplaceFromAB()<CR>
