@@ -69,6 +69,8 @@ set splitright
 
 set encoding=utf-8
 
+set smartcase
+
 " Enable powerline by default
 set laststatus=2
 let g:airline_solarized_bg='dark'
