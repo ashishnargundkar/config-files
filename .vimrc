@@ -23,7 +23,7 @@ Plugin 'scrooloose/syntastic'
 " PEP8 checking
 Plugin 'nvie/vim-flake8'
 
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -34,6 +34,9 @@ Plugin 'tpope/vim-rhubarb'
 Plugin 'prendradjaja/vim-vertigo'
 Plugin 'jreybert/vimagit'
 Plugin 'rust-lang/rust.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-latex/vim-latex'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,6 +71,8 @@ set encoding=utf-8
 
 " Enable powerline by default
 set laststatus=2
+let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts = 1
 
 " Use the solarized dark theme
 set background=dark
