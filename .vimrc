@@ -87,6 +87,10 @@ autocmd BufNewFile,BufRead *.py
    \ set textwidth=79 |
     \ set autoindent
 
+autocmd BufNewFile,BufRead *.cc,*.h
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
 let python_highlight_all=1
 
 syntax on
