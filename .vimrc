@@ -79,6 +79,7 @@ let g:airline_powerline_fonts = 1
 " Use the solarized dark theme
 set background=dark
 colorscheme solarized
+set t_Co=256
 
 " Spelling correction enabled. Use spellang= to change dictionary language.
 set spell
