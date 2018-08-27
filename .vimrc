@@ -36,6 +36,8 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-latex/vim-latex'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
