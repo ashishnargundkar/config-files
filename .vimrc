@@ -23,7 +23,6 @@ Plugin 'scrooloose/syntastic'
 " PEP8 checking
 Plugin 'nvie/vim-flake8'
 
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
