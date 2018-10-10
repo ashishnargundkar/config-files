@@ -18,8 +18,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Syntax checking
 Plugin 'scrooloose/syntastic'
@@ -129,11 +127,6 @@ set pastetoggle=<F2>
 
 " Apply YCM FixIt
 map <F9> :YcmCompleter FixIt<CR>
-
-" Easy shortcut to toggle the NERDTree buffer
-map <C-N> :NERDTreeToggle<CR>
-" Quit if NERDtree is the only open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
