@@ -3,6 +3,10 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
+" Default fzf vim plugin when fzf was installed with homebrew
+set rtp+=/usr/local/opt/fzf
+
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
@@ -14,8 +18,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Syntax checking
 Plugin 'scrooloose/syntastic'
@@ -25,17 +29,18 @@ Plugin 'nvie/vim-flake8'
 
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'prendradjaja/vim-vertigo'
-Plugin 'jreybert/vimagit'
-Plugin 'rust-lang/rust.vim'
+"Plugin 'prendradjaja/vim-vertigo'
+"Plugin 'jreybert/vimagit'
+"Plugin 'rust-lang/rust.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-latex/vim-latex'
+"Plugin 'vim-latex/vim-latex'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'slashmili/alchemist.vim'
 
@@ -89,7 +94,7 @@ autocmd BufNewFile,BufRead *.py
    \ set textwidth=79 |
     \ set autoindent
 
-autocmd BufNewFile,BufRead *.cc,*.h
+autocmd BufNewFile,BufRead *.cc,*.h,*.cpp,*.hpp
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
@@ -98,7 +103,7 @@ let python_highlight_all=1
 syntax on
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -121,6 +126,9 @@ set wildignore-=.vimrc,.tmux.conf,.zshrc,.emacs
 " while pasting)
 " Please note that expandtab is disabled when vim is in paste mode
 set pastetoggle=<F2>
+
+" Apply YCM FixIt
+map <F9> :YcmCompleter FixIt<CR>
 
 " Easy shortcut to toggle the NERDTree buffer
 map <C-N> :NERDTreeToggle<CR>
@@ -186,12 +194,12 @@ nnoremap <C-H> <C-W><C-H>
 " Move through lines using relative numbering without leaving the
 " keyboard home row!
 " See: https://github.com/prendradjaja/vim-vertigo#vimrc-mappings
-nnoremap <silent> <leader>j :<C-U>VertigoDown n<CR>
-vnoremap <silent> <leader>j :<C-U>VertigoDown v<CR>
-onoremap <silent> <leader>j :<C-U>VertigoDown o<CR>
-nnoremap <silent> <leader>k :<C-U>VertigoUp n<CR>
-vnoremap <silent> <leader>k :<C-U>VertigoUp v<CR>
-onoremap <silent> <leader>k :<C-U>VertigoUp o<CR>
+"nnoremap <silent> <leader>j :<C-U>VertigoDown n<CR>
+"vnoremap <silent> <leader>j :<C-U>VertigoDown v<CR>
+"onoremap <silent> <leader>j :<C-U>VertigoDown o<CR>
+"nnoremap <silent> <leader>k :<C-U>VertigoUp n<CR>
+"vnoremap <silent> <leader>k :<C-U>VertigoUp v<CR>
+"onoremap <silent> <leader>k :<C-U>VertigoUp o<CR>
 
 " In insert mode, update (i.e. save only if buffer has unsaved changes)
 " using <C-S> and get out of insert mode
