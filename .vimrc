@@ -250,13 +250,14 @@ vmap <M-l> <Esc>
 cmap <M-.> <Esc>
 cmap <M-l> <Esc>
 
-" http://howivim.com/2016/damian-conway/
-" <UP> and <DOWN> to step through the file list
-nmap <silent> <UP>            :prev<CR>
-nmap <silent> <DOWN>          :next<CR>
+" Handy shortcuts to jump to loclist (very helpful with syntastic)
+nmap <silent> <C-K>          :lprev<CR>
+nmap <silent> <C-J>          :lnext<CR>
+
 " <LEFT> and <RIGHT> to step through the quickfix list
 nmap <silent> <LEFT>          :cprev<CR>
 nmap <silent> <RIGHT>         :cnext<CR>
+
 " double <LEFT> and <RIGHT> to jump through the quickfix file list
 nmap <silent> <LEFT><LEFT>    :cpfile<CR><C-G>
 nmap <silent> <RIGHT><RIGHT>  :cnfile<CR><C-G>
