@@ -11,6 +11,7 @@ export ZSH=/Users/apnargundkar/.oh-my-zsh
 # See https://stackoverflow.com/a/1438523
 autoload -U select-word-style
 select-word-style bash
+setopt no_auto_remove_slash
 
 # Had to add this to bind <C-s> in vim
 # So as not to be disturbed by Ctrl-S Ctrl-Q in terminals
