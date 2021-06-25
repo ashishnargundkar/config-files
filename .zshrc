@@ -94,8 +94,8 @@ else
     export EDITOR='vim'
 fi
 
-# Use vim keymap for zle
-bindkey -v
+# Use emacs keymap for zle
+bindkey -e
 
 bindkey '^r' history-incremental-search-backward
 bindkey '^a' beginning-of-line
@@ -117,3 +117,5 @@ bindkey '^n' history-search-forward
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
